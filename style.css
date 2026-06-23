@@ -1,0 +1,284 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* PAGE LAYOUT */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../../../../../../Assets/Images/embackgroundpicture.png") center center / cover no-repeat fixed;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+}
+
+/* MAIN WRAPPER */
+main {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    margin: 0 auto;
+}
+
+/* PROFILE */
+.pfp-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pfp-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px #111;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.pfp-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #111;
+    border-radius: 50%;
+}
+
+/* PFP LAYERS */
+.pfp-wrap img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity ease;
+}
+
+/* BASE IMAGE */
+#pfpBase {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* INDIVIDUAL SCALE CONTROL */
+#pfpBase { transform: translate(-50%, -50%) scale(1.3); }
+#pfpHover { transform: translate(-50%, -50%) scale(2); }
+#pfpDiscordHover { transform: translate(-50%, -50%) scale(0.9); }
+#pfpInstagramHover { transform: translate(-50%, -50%) scale(1.5); }
+#pfpYoutubeHover { transform: translate(-50%, -50%) scale(2.25); }
+#pfpSpotifyHover { transform: translate(-50%, -50%) scale(1.35); }
+#pfpAmazonHover { transform: translate(-50%, -50%) scale(1.3); }
+#pfpPaypalHover { transform: translate(-50%, -50%) scale(2); }
+
+/* PROFILE TEXT */
+#profile h1,
+#profile p {
+    color: #f5f5f5;
+    text-shadow: 0 0 6px #000;
+}
+
+/* BASIC LINK BUTTONS */
+.button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    padding: 14px;
+    margin: 10px auto;
+    background: #222;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+}
+
+.button:hover {
+    background: #333;
+}
+
+#support-links {
+    display: none;
+}
+
+/* MODERN SOCIAL BUTTONS */
+.modern-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+    padding: 16px;
+    margin: 10px auto;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(88,101,242,.20), rgba(0,0,0,.60));
+    border: 2px solid rgba(88,101,242,.25);
+    backdrop-filter: blur(12px);
+    text-decoration: none;
+    color: white;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.modern-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+    transform: translateX(-150%);
+    transition: transform .8s ease;
+}
+
+.modern-btn:hover::before {
+    transform: translateX(150%);
+}
+
+.modern-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(88,101,242,.7);
+    box-shadow: 0 0 30px rgba(88,101,242,.25);
+}
+
+.modern-btn-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(88,101,242,.35), rgba(88,101,242,.10));
+    flex-shrink: 0;
+    font-size: 24px;
+    color: #aab5ff;
+}
+
+.modern-btn-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.modern-btn-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: left;
+}
+
+.modern-btn-title {
+    color: #dfe5ff;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.modern-btn-subtitle {
+    color: rgba(255,255,255,.55);
+    font-size: .82rem;
+}
+
+.modern-btn-arrow {
+    font-size: 1.5rem;
+    color: #aab5ff;
+    transition: transform .3s ease;
+}
+
+.modern-btn:hover .modern-btn-arrow {
+    transform: translateX(4px);
+}
+
+/* SPINNING GLOW TOGGLE BUTTON */
+.glow-btn {
+    position: relative;
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    background: #1b1c20;
+    color: white;
+    overflow: visible;
+}
+
+/* FIX: REMOVE SVG SQUARE */
+.glow-border {
+    position: absolute;
+    inset: -12px;
+    width: calc(100% + 24px);
+    height: calc(100% + 24px);
+    pointer-events: none;
+
+    background: transparent !important;
+    fill: transparent !important;
+    stroke: none !important;
+
+    display: block; /* prevents viewport box */
+}
+
+.glow-border rect {
+    fill: none !important;
+    background: none !important;
+    stroke-linecap: round;
+}
+
+/* GLOW LINES */
+.glow-line,
+.glow-blur {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke-width: 4px;
+    rx: 14px;
+    stroke-dasharray: 30 70;
+    transform-origin: center;
+}
+
+.glow-line {
+    animation: spin 2.2s linear infinite, colorShift 3s ease-in-out infinite alternate;
+}
+
+.glow-blur {
+    filter: blur(10px);
+    stroke-width: 10px;
+    animation: spin 2.2s linear infinite, colorShift 3s ease-in-out infinite alternate;
+}
+
+/* ANIMATIONS */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes colorShift {
+    0% { stroke: #ff8c00; }
+    100% { stroke: #00c853; }
+}
+
+/* HOVER BEHAVIOR */
+.glow-btn:not(:hover) .glow-line,
+.glow-btn:not(:hover) .glow-blur {
+    animation-play-state: paused;
+    opacity: 0;
+}
+
+.glow-btn:hover .glow-line,
+.glow-btn:hover .glow-blur {
+    opacity: 1;
+}
